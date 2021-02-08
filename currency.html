@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script> -->
+    <style>
+        body{
+            background-color: rgb(11, 134, 145);
+            /* color: white; */
+        }
+        /* .formData{
+            background-color: rgb(11, 134, 145);
+        } */
+    </style>
+</head>
+
+<body>
+    <div class=" container">
+        <div class="row">
+            <div class="offset-sm-2 col-12  col-md-8 mt-5 formData bg-white">
+                <h1 class="text-center">Currency Converter</h1>
+                <div class="row">
+                    <div class="col-md-5 col-12">
+                        <div class="form-group ">
+                            <label for="getCur">Original Currency</label>
+                            <select id="getCur" class="form-control mb-2" onchange="getSelectedFromOption()">
+                                <option value="">Selecte Currency</option>
+                                <option value="INR">(INR) Indian Rupee</option>
+                                <option value="USD">(USD) United State Dollar</option>
+                                <option value="GBP">(GBP) Great Britain Pound</option>
+                                <option value="EUR">(EUR) Europian Union Currency</option>                            
+                                <option value="CAD">(CAD) Canadian dollar</option>
+                                <option value="HKD">(HKD) Hong Kong dollar</option>
+                                <option value="ISK">(ISK) Icelandic króna</option>
+                                <option value="DKK">(DKK) Danish krone</option>
+                                <option value="HUF">(HUF) Hungarian forint</option>
+                                <option value="CZK">(CZK) Czech koruna</option>
+                                <option value="RON">(RON) Romanian new leu</option>
+                                <option value="SEK">(SEK) Swedish krona</option>
+                                <option value="IDR">(IDR) Indonesian rupiah</option>
+                                <option value="RUB">(RUB) Russian ruble</option>
+                                <option value="BRL">(BRL) Brazilian real</option>
+                                <option value="HRK">(HRK) Croatian kuna</option>
+                                <option value="JPY">(JPY) Japanese yen</option>
+                                <option value="THB">(THB) currency of Thailand</option>
+                                <option value="CHF">(CHF) Swiss Franc</option> 
+                                <option value="MYR">(MYR) Malaysian ringgit</option>
+                                <option value="BGN">(BGN) Bulgarian Lev</option>
+                                <option value="TRY">(TRY) Turkish lira</option>
+                                <option value="CNY">(CNY) Chinese yuan</option>
+                                <option value="NOK">(NOK) Norwegian krone</option>
+                                <option value="NZD">(NZD) New Zealand dollar</option>
+                                <option value="ZAR">(ZAR) South African rand</option>
+                                <option value="SGD">(SGD) Singapore dollar</option>
+                                <option value="AUD">(AUD) Australian Dollar</option>
+                                <option value="ILS">(ILS) Israeli new shekel</option>
+                                <option value="KRW">(KRW) Korean Won</option>
+                                <option value="PLN">(PLN) Polish złoty</option>
+                                <option value="PHP">PHP</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="getVal">Input value to be converted</label>
+                            <input type="text" class="form-control mb-2" id="getVal" placeholder="Input Value">
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-none d-md-block">
+                        <div class="mt-5 ml-3">
+
+                        </div>
+                        <div class="mt-5 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="16" fill="currentColor" class="bi mt-5  bi-arrow-left-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                              </svg>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-5 col-12">
+
+                        <div class="form-group">
+                            <label for="setCur">Final Currency</label>
+                            <select id="setCur" class="form-control mb-2" onchange="getSelectedToOption()">
+                                <option value="">Selecte Currency</option>
+                                <option value="INR">(INR) Indian Rupee</option>
+                                <option value="USD">(USD) United State Dollar</option>
+                                <option value="GBP">(GBP) Great Britain Pound</option>
+                                <option value="EUR">(EUR) Europian Union Currency</option>                            
+                                <option value="CAD">(CAD) Canadian dollar</option>
+                                <option value="HKD">(HKD) Hong Kong dollar</option>
+                                <option value="ISK">(ISK) Icelandic króna</option>                    
+                                <option value="DKK">(DKK) Danish krone</option>
+                                <option value="HUF">(HUF) Hungarian forint</option>
+                                <option value="CZK">(CZK) Czech koruna</option>
+                                <option value="RON">(RON) Romanian new leu</option>
+                                <option value="SEK">(SEK) Swedish krona</option>
+                                <option value="IDR">(IDR) Indonesian rupiah</option>
+                                <option value="RUB">(RUB) Russian ruble</option>
+                                <option value="BRL">(BRL) Brazilian real</option>
+                                <option value="HRK">(HRK) Croatian kuna</option>
+                                <option value="JPY">(JPY) Japanese yen</option>
+                                <option value="THB">(THB) currency of Thailand</option>
+                                <option value="CHF">(CHF) Swiss Franc</option> 
+                                <option value="MYR">(MYR) Malaysian ringgit</option>
+                                <option value="BGN">(BGN) Bulgarian Lev</option>
+                                <option value="TRY">(TRY) Turkish lira</option>
+                                <option value="CNY">(CNY) Chinese yuan</option>
+                                <option value="NOK">(NOK) Norwegian krone</option>
+                                <option value="NZD">(NZD) New Zealand dollar</option>
+                                <option value="ZAR">(ZAR) South African rand</option>
+                                <option value="SGD">(SGD) Singapore dollar</option>
+                                <option value="AUD">(AUD) Australian Dollar</option>
+                                <option value="ILS">(ILS) Israeli new shekel</option>
+                                <option value="KRW">(KRW) Korean Won</option>
+                                <option value="PLN">(PLN) Polish złoty</option>
+                                <option value="PHP">PHP</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="convert">Converted Value</label>
+                            <input type="text" class="form-control mb-2" id="convert">
+        
+        
+                            <!-- <label for="getRupee">Indian Rupee</label>
+                            <input type="text" class="form-control mb-2" id="getRupee">
+                            <label for="getRupee">Indian Rupee to USD</label>
+                            <input type="text" class="form-control mb-2" id="USD">
+                            <label for="getRupee">Indian Rupee to GBP</label>
+                            <input type="text" class="form-control mb-2" id="GBP"> -->
+        
+                            <!-- <button type="submit" class="btn btn-primary mb-2 btn-block form-control"
+                                onClick="getDataForFoll()">Get GBP</button>
+                            <button type="submit" class="btn btn-success mb-2 btn-block form-control"
+                                onClick="getDataForRepo()">Get Repository Data</button>
+                            <button type="submit" class="btn btn-info mb-2 btn-block form-control"
+                                onClick="getDataForSearchURL()">Get Repository Data</button> -->
+                        </div>
+                    </div>
+                </div>
+  
+                <button type="submit" class="btn btn-danger mb-2 btn-block form-control" onClick="getData()"> Get
+                    Conversion</button>
+                <p id="demo"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var base = '';
+        var symbols = '';
+        function getSelectedFromOption() {
+            base = document.querySelector('select#getCur').value;
+        }
+
+        function getSelectedToOption() {
+            symbols = document.querySelector('select#setCur').value;
+        }
+
+        function getData() {
+            var input = document.querySelector('#getVal').value;
+            getCurrency(base, symbols, input)
+        }
+
+        async function getCurrency(base, symbols, input) {
+            var resData = await fetch('https://api.exchangeratesapi.io/latest?symbols=' + symbols + '&base=' + base)
+            var data = await resData.json()
+            // var converted = ''
+            // converted = data.rates.symbols* input
+            var converted = Object.values(data.rates)[0] * input
+            console.log(converted)
+            // if (symbols == 'USD') {
+            //     converted = data.rates.USD * input
+            // }
+            // else if (symbols == 'INR') {
+            //     converted = data.rates.INR * input
+            // }
+            // else if (symbols == 'EUR') {
+            //     converted = data.rates.EUR * input
+            // }
+            // else if (symbols == 'GBP') {
+            //     converted = data.rates.GBP * input
+            // }
+            document.querySelector('#convert').value = converted
+            // document.querySelector('#GBP').value = gbp
+            console.log("Base : " + base, "Symbols : " + symbols)
+            base = ''
+            symbols = ''
+            return data
+        }
+
+
+
+
+
+
+
+
+
+        // function getData() {
+        //     var input = document.querySelector('#getName').value;
+        //     var data =  getProfileData(input)
+        // }
+
+
+        // async function getProfileData(user) {
+
+        //     var resData = await fetch('https://api.github.com/users/' + user)
+        //     var data = await resData.json();
+        //     console.log(data);
+
+        // }
+
+        // function getDataForFoll() {
+        //     var input = document.querySelector('#getName').value;
+        //     getFollowerData(input)
+        // }
+
+        // async function getFollowerData(user) {
+        //     var resData = await fetch('https://api.github.com/users/' + user + '/followers');
+        //     var data = await resData.json();
+        //     console.log(data);
+
+
+        // }
+
+        // function getDataForRepo() {
+        //     var input = document.querySelector('#getName').value;
+        //     getRepoData(input);
+        // }
+
+        // async function getRepoData(user) {
+        //     var ressData = await fetch('https://api.github.com/users/' + user + '/repos?user,2,2,true');
+        //     var data = await ressData.json();
+        //     console.log(data);
+
+
+        // }
+
+        // function getDataForSearchURL() {
+        //     var input = document.querySelector('#getName').value;
+        //     getDataForSearchURLData(input);
+        // }
+
+        // async function getDataForSearchURLData(user) {
+        //     var resData = await fetch('https://api.github.com/search/users?q=' + user + '&2,2')
+        //     var data = await resData.json();
+        //     console.log(data);
+
+        // }
+    </script>
+</body>
+
+</html>
+
+
+<!-- user_search_url
+followers_url
+user_url
+user_repositories_url -->
+
+<!-- 
+//             var row = myDocument('div','row','row')
+//             
+//             table.append(thead)
+//             row.append(table)
+//             container.append(row)
+//             document.body.append(container) -->
