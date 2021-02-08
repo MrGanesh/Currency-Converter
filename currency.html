@@ -9,17 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script> -->
     <style>
         body{
             background-color: rgb(11, 134, 145);
@@ -89,8 +78,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="16" fill="currentColor" class="bi mt-5  bi-arrow-left-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
                               </svg>
-                        </div>
-                        
+                        </div>                      
                     </div>
                     <div class="col-md-5 col-12">
 
@@ -135,34 +123,15 @@
                         <div class="form-group">
                             <label for="convert">Converted Value</label>
                             <input type="text" class="form-control mb-2" id="convert">
-        
-        
-                            <!-- <label for="getRupee">Indian Rupee</label>
-                            <input type="text" class="form-control mb-2" id="getRupee">
-                            <label for="getRupee">Indian Rupee to USD</label>
-                            <input type="text" class="form-control mb-2" id="USD">
-                            <label for="getRupee">Indian Rupee to GBP</label>
-                            <input type="text" class="form-control mb-2" id="GBP"> -->
-        
-                            <!-- <button type="submit" class="btn btn-primary mb-2 btn-block form-control"
-                                onClick="getDataForFoll()">Get GBP</button>
-                            <button type="submit" class="btn btn-success mb-2 btn-block form-control"
-                                onClick="getDataForRepo()">Get Repository Data</button>
-                            <button type="submit" class="btn btn-info mb-2 btn-block form-control"
-                                onClick="getDataForSearchURL()">Get Repository Data</button> -->
                         </div>
                     </div>
                 </div>
-  
                 <button type="submit" class="btn btn-danger mb-2 btn-block form-control" onClick="getData()"> Get
                     Conversion</button>
                 <p id="demo"></p>
             </div>
         </div>
     </div>
-
-
-
     <script>
         var base = '';
         var symbols = '';
@@ -182,104 +151,16 @@
         async function getCurrency(base, symbols, input) {
             var resData = await fetch('https://api.exchangeratesapi.io/latest?symbols=' + symbols + '&base=' + base)
             var data = await resData.json()
-            // var converted = ''
-            // converted = data.rates.symbols* input
             var converted = Object.values(data.rates)[0] * input
             console.log(converted)
-            // if (symbols == 'USD') {
-            //     converted = data.rates.USD * input
-            // }
-            // else if (symbols == 'INR') {
-            //     converted = data.rates.INR * input
-            // }
-            // else if (symbols == 'EUR') {
-            //     converted = data.rates.EUR * input
-            // }
-            // else if (symbols == 'GBP') {
-            //     converted = data.rates.GBP * input
-            // }
             document.querySelector('#convert').value = converted
-            // document.querySelector('#GBP').value = gbp
             console.log("Base : " + base, "Symbols : " + symbols)
             base = ''
             symbols = ''
             return data
         }
-
-
-
-
-
-
-
-
-
-        // function getData() {
-        //     var input = document.querySelector('#getName').value;
-        //     var data =  getProfileData(input)
-        // }
-
-
-        // async function getProfileData(user) {
-
-        //     var resData = await fetch('https://api.github.com/users/' + user)
-        //     var data = await resData.json();
-        //     console.log(data);
-
-        // }
-
-        // function getDataForFoll() {
-        //     var input = document.querySelector('#getName').value;
-        //     getFollowerData(input)
-        // }
-
-        // async function getFollowerData(user) {
-        //     var resData = await fetch('https://api.github.com/users/' + user + '/followers');
-        //     var data = await resData.json();
-        //     console.log(data);
-
-
-        // }
-
-        // function getDataForRepo() {
-        //     var input = document.querySelector('#getName').value;
-        //     getRepoData(input);
-        // }
-
-        // async function getRepoData(user) {
-        //     var ressData = await fetch('https://api.github.com/users/' + user + '/repos?user,2,2,true');
-        //     var data = await ressData.json();
-        //     console.log(data);
-
-
-        // }
-
-        // function getDataForSearchURL() {
-        //     var input = document.querySelector('#getName').value;
-        //     getDataForSearchURLData(input);
-        // }
-
-        // async function getDataForSearchURLData(user) {
-        //     var resData = await fetch('https://api.github.com/search/users?q=' + user + '&2,2')
-        //     var data = await resData.json();
-        //     console.log(data);
-
-        // }
     </script>
 </body>
 
 </html>
 
-
-<!-- user_search_url
-followers_url
-user_url
-user_repositories_url -->
-
-<!-- 
-//             var row = myDocument('div','row','row')
-//             
-//             table.append(thead)
-//             row.append(table)
-//             container.append(row)
-//             document.body.append(container) -->
